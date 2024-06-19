@@ -1,33 +1,33 @@
 def good_suffix_shift(pattern):
-    m = len(pattern)
-    suffix = [0] * m
-    gs = [m] * m  # 初始化gs数组，假设在没有好后缀的情况下，移动整个模式长度
+    pattern_length = len(pattern)
+    suffix = [0] * pattern_length
+    gs = [pattern_length] * pattern_length  # 初始化gs数组，假设在没有好后缀的情况下，移动整个模式长度
 
     # 计算suffix数组
-    suffix[m-1] = m
-    f = m-1
-    for i in range(m-2, -1, -1):
-        if i > f and suffix[i + m - 1 - f] < i - f:
-            suffix[i] = suffix[i + m - 1 - f]
+    suffix[pattern_length-1] = pattern_length
+    f = pattern_length-1
+    for i in range(pattern_length-2, -1, -1):
+        if i > f and suffix[i + pattern_length - 1 - f] < i - f:
+            suffix[i] = suffix[i + pattern_length - 1 - f]
         else:
             if i < f:
                 f = i
-            while f >= 0 and pattern[f] == pattern[f + m - 1 - i]:
+            while f >= 0 and pattern[f] == pattern[f + pattern_length - 1 - i]:
                 f -= 1
             suffix[i] = i - f
 
     # 计算好后缀移动数组gs
     j = 0
-    for i in range(m-1, -1, -1):
+    for i in range(pattern_length-1, -1, -1):
         if suffix[i] == i + 1:  # 全后缀匹配的情况
-            while j < m - 1 - i:
-                if gs[j] == m:  # 只有当gs[j]未被设置时才更新
-                    gs[j] = m - 1 - i
+            while j < pattern_length - 1 - i:
+                if gs[j] == pattern_length:  # 只有当gs[j]未被设置时才更新
+                    gs[j] = pattern_length - 1 - i
                 j += 1
 
     # 其他情况，根据suffix值设置gs值
-    for i in range(m - 1):
-        gs[m - 1 - suffix[i]] = m - 1 - i
+    for i in range(pattern_length - 1):
+        gs[pattern_length - 1 - suffix[i]] = pattern_length - 1 - i
 
     return gs
 
