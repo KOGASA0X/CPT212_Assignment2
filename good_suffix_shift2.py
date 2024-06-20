@@ -93,8 +93,8 @@ def search(text, pat):
 
 # Driver Code
 if __name__ == "__main__":
-	text = "TESTXT"
-	pat = "TSESTSES"
+	text = "AXAAXAAxAAAXAXXAAA"
+	pat = "AXA"
 	search(text, pat)
 
 # This code is contributed by
