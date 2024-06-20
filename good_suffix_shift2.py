@@ -99,3 +99,4 @@ if __name__ == "__main__":
 
 # This code is contributed by
 # sanjeev2552
+# https://www.geeksforgeeks.org/boyer-moore-algorithm-good-suffix-heuristic/
